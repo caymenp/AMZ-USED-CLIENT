@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -9,6 +9,7 @@ import Grid from "@mui/material/Unstable_Grid2/Grid2";
 
 export const ProductCards = ({ handleDelete, handleDetails }) => {
   const data = useProductData();
+
   const getDiscountedAmount = (newPrice, usedPrice) => {
     const amountDiff = newPrice - usedPrice;
     return Math.trunc((amountDiff / newPrice) * 100);
@@ -17,7 +18,7 @@ export const ProductCards = ({ handleDelete, handleDetails }) => {
   return (
     <div>
       {data &&
-        data.map((product) => {
+        [...data].reverse().map((product) => {
           return (
             <Card sx={{ minWidth: 275, marginBottom: 2 }} key={product._id}>
               <CardContent>
@@ -87,7 +88,14 @@ export const ProductCards = ({ handleDelete, handleDetails }) => {
                 </Typography>
                 <Grid container>
                   <Grid item xs={12} textAlign="center" marginTop={2}>
-                    <Button variant="outlined">🛒 View on Amazon</Button>
+                    <a
+                      href={product.productURL}
+                      target="_blank"
+                      rel="noopener"
+                      style={{ textDecoration: "none" }}
+                    >
+                      <Button variant="outlined">🛒 View on Amazon</Button>
+                    </a>
                   </Grid>
                 </Grid>
               </CardContent>

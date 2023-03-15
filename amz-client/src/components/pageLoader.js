@@ -11,7 +11,7 @@ export const PageLoader = ({ loading }) => {
 
   return (
     <Backdrop
-      sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      sx={{ color: "#fff", zIndex: 2000 }}
       open={open}
       onClick={handleClose}
     >

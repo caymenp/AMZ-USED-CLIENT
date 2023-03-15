@@ -1,4 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import { Button } from "@mui/material";
 import React from "react";
 
 export const LoginButton = () => {
@@ -13,8 +14,8 @@ export const LoginButton = () => {
   };
 
   return (
-    <button className="button__login" onClick={handleLogin}>
-      Log In
-    </button>
+    <Button variant="contained" className="button__login" onClick={handleLogin}>
+      Login
+    </Button>
   );
 };

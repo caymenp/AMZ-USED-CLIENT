@@ -12,6 +12,7 @@ import "../styles/pageStyles/accountPage.css";
 import NewProductModal from "../components/NewProduct.modal";
 import ConfirmationModal from "../components/ConfirmationModal";
 import ProductDetailModal from "../components/ProductDetailModal";
+import { useNavigate } from "react-router-dom";
 
 export const AccountPage = () => {
   const initialData = useProductData();

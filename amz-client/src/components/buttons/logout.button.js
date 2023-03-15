@@ -13,7 +13,18 @@ export const LogoutButton = () => {
   };
 
   return (
-    <button className="button__logout" onClick={handleLogout}>
+    <button
+      className="button__logout"
+      onClick={handleLogout}
+      style={{
+        backgroundColor: "#c97c08",
+        border: 0,
+        color: "whitesmoke",
+        padding: 10,
+        width: "7rem",
+        borderRadius: 20,
+      }}
+    >
       Log Out
     </button>
   );

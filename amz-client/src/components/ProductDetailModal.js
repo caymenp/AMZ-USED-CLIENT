@@ -35,62 +35,63 @@ export default function ProductDetailModal({ product, handleClose }) {
   const handleRefreshOnClose = () => {
     if (initialData === productData) {
       handleClose();
+    } else {
+      actions.getAllProducts();
+      handleClose();
     }
   };
 
   return (
-    <div>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        scroll={"paper"}
-        aria-labelledby="scroll-dialog-title"
-        aria-describedby="scroll-dialog-description"
-      >
-        <DialogTitle fontSize={18} id="scroll-dialog-title">
-          Used Price History
-        </DialogTitle>
-        <Grid container>
-          <Grid item xs={12} textAlign="center">
-            <img
-              width={"40%"}
-              src={productData.prodImg}
-              alt={productData.productName}
-            ></img>
-          </Grid>
+    <Dialog
+      open={open}
+      onClose={handleRefreshOnClose}
+      scroll={"paper"}
+      aria-labelledby="scroll-dialog-title"
+      aria-describedby="scroll-dialog-description"
+    >
+      <DialogTitle fontSize={18} id="scroll-dialog-title">
+        Used Price History
+      </DialogTitle>
+      <Grid container>
+        <Grid item xs={12} textAlign="center">
+          <img
+            width={"40%"}
+            src={productData.prodImg}
+            alt={productData.productName}
+          ></img>
         </Grid>
-        <DialogContent dividers={"paper"}>
-          <TableContainer component={Paper}>
-            <Table aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Price Used</TableCell>
-                  <TableCell align="right">Date Reported</TableCell>
+      </Grid>
+      <DialogContent dividers={true}>
+        <TableContainer component={Paper}>
+          <Table aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Price Used</TableCell>
+                <TableCell align="right">Date Reported</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {productData.productPriceUsed.map((item) => (
+                <TableRow
+                  key={item.dateTracker}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    ${item.usedPrice}
+                  </TableCell>
+                  <TableCell align="right">
+                    {new Date(item.dateTracker).toLocaleDateString()}
+                  </TableCell>
                 </TableRow>
-              </TableHead>
-              <TableBody>
-                {productData.productPriceUsed.map((item) => (
-                  <TableRow
-                    key={item.dateTracker}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
-                    <TableCell component="th" scope="row">
-                      ${item.usedPrice}
-                    </TableCell>
-                    <TableCell align="right">
-                      {new Date(item.dateTracker).toLocaleDateString()}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Close</Button>
-          <Button onClick={handleRefresh}>Refresh Price</Button>
-        </DialogActions>
-      </Dialog>
-    </div>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleRefreshOnClose}>Close</Button>
+        <Button onClick={handleRefresh}>Refresh Price</Button>
+      </DialogActions>
+    </Dialog>
   );
 }
