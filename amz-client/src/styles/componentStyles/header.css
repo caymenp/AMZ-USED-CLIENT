@@ -1,0 +1,9 @@
+#headerContainer {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.869);
+  text-align: center;
+}
+
+#brandLOGO {
+  padding: 0.25rem;
+}

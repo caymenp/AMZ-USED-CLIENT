@@ -1,0 +1,15 @@
+#splashCardContainer {
+  flex-direction: row;
+  background-color: aliceblue;
+  width: 100%;
+}
+
+#homeCardContent {
+  padding: 0.25rem;
+  text-align: center;
+}
+
+#signUpBTNWrapper {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}

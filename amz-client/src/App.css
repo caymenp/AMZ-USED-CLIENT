@@ -1,0 +1,11 @@
+.page-layout {
+  display: inline;
+}
+
+.contentWrapper {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+  flex-direction: column;
+}

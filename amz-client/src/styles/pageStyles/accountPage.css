@@ -1,0 +1,10 @@
+#accountContentContainer {
+  width: 90%;
+  margin: auto;
+  margin-top: 1rem;
+}
+
+#actionBarContainer {
+  margin: auto;
+  text-align: center;
+}
