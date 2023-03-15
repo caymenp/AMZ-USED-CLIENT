@@ -4,7 +4,7 @@ export async function getAllProducts(email) {
   const params = {
     userEmail: email,
   };
-  const response = await axios.get("http://localhost:3000/app/userItems", {
+  const response = await axios.get("https://api.amzused.com/app/userItems", {
     params: { userEmail: email },
   });
 
@@ -17,7 +17,7 @@ export async function addNewProduct(email, prodURL) {
     productURL: prodURL,
   };
   const response = await axios.post(
-    "http://localhost:3000/app/addItem",
+    "https://api.amzused.com/app/addItem",
     payload
   );
 
@@ -31,7 +31,7 @@ export async function deleteProduct(prodID) {
     },
   };
   const response = await axios.delete(
-    "http://localhost:3000/app/deleteItem",
+    "https://api.amzused.com/app/deleteItem",
     params
   );
 
@@ -44,7 +44,7 @@ export async function refreshItem(prodID, prodURL) {
     productURL: prodURL,
   };
   const response = await axios.post(
-    "http://localhost:3000/app/refreshItem",
+    "https://api.amzused.com/app/refreshItem",
     payload
   );
 
