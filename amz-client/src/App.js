@@ -12,7 +12,7 @@ import { UserAccount } from "./pages/UserAccount.page";
 import { UserNotAuth } from "./components/UserNotAuth";
 
 function App() {
-  const { isLoading, isAuthenticated } = useAuth0();
+  const { isLoading, isAuthenticated, user } = useAuth0();
 
   if (isLoading) {
     return (
@@ -22,7 +22,7 @@ function App() {
     );
   }
 
-  if (isAuthenticated) {
+  if (user) {
     return (
       <ProductProvider>
         <div className="page-layout">
