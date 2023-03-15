@@ -12,7 +12,7 @@ import { UserAccount } from "./pages/UserAccount.page";
 import { UserNotAuth } from "./components/UserNotAuth";
 
 function App() {
-  const { isLoading, isAuthenticated, user } = useAuth0();
+  const { isLoading } = useAuth0();
 
   if (isLoading) {
     return (
@@ -22,36 +22,21 @@ function App() {
     );
   }
 
-  if (user) {
-    return (
-      <ProductProvider>
-        <div className="page-layout">
-          <Header />
-          <div className="contentWrapper">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/account" element={<AccountPage />} />
-              <Route path="/user" element={<UserAccount />} />
-              <Route path="/callback" element={<CallbackPage />} />
-            </Routes>
-          </div>
-        </div>
-      </ProductProvider>
-    );
-  } else {
-    return (
+  return (
+    <ProductProvider>
       <div className="page-layout">
         <Header />
         <div className="contentWrapper">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/account" element={<AccountPage />} />
+            <Route path="/user" element={<UserAccount />} />
             <Route path="/callback" element={<CallbackPage />} />
-            <Route path="*" element={<UserNotAuth />} />
           </Routes>
         </div>
       </div>
-    );
-  }
+    </ProductProvider>
+  );
 }
 
 export default App;

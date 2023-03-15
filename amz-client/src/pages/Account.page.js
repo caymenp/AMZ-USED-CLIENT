@@ -12,9 +12,10 @@ import "../styles/pageStyles/accountPage.css";
 import NewProductModal from "../components/NewProduct.modal";
 import ConfirmationModal from "../components/ConfirmationModal";
 import ProductDetailModal from "../components/ProductDetailModal";
-import { useNavigate } from "react-router-dom";
+import { UserNotAuth } from "../components/UserNotAuth";
 
 export const AccountPage = () => {
+  const { user } = useAuth0();
   const initialData = useProductData();
   const actions = useProductActions();
   const [prodID, setProdID] = useState();
@@ -57,6 +58,10 @@ export const AccountPage = () => {
   const handleDetailModal = () => {
     setOpenDetails(!openDetails);
   };
+
+  if (!user) {
+    return <UserNotAuth />;
+  }
 
   return (
     <div id="accountWrapper">

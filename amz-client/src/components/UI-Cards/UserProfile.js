@@ -4,9 +4,15 @@ import { AccountActionBar } from "../AccountActionBar";
 import { Paper, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import { LogoutButton } from "../buttons/logout.button";
+import { UserNotAuth } from "../UserNotAuth";
 
 export const UserProfileCard = () => {
   const { user } = useAuth0();
+
+  if (!user) {
+    return <UserNotAuth />;
+  }
+
   return (
     <>
       <Grid container spacing={2} marginTop={2}>
