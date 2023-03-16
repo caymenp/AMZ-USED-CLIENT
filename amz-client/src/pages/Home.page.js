@@ -1,15 +1,20 @@
-import { height } from "@mui/system";
-import React from "react";
-import { AdterraBanner } from "../components/AdsBanner";
-import { LoginButton } from "../components/buttons/login.button";
+import React, { useEffect } from "react";
 import { HomeHero } from "../components/HomeHero";
 import { MembershipCTABanner } from "../components/HomePage/FreeMembershipCTA";
 import { HowItWorks } from "../components/HomePage/HowItWorks";
-import { WhyUsed } from "../components/HomePage/WhyUsed";
-import { SplashCard } from "../components/UI-Cards/SplashCard";
-import LOGO from "../util/media/AMZused_LOGO.png";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
+  const navigate = useNavigate();
+  const { user } = useAuth0();
+
+  useEffect(() => {
+    if (user) {
+      navigate("/account");
+    }
+  }, []);
+
   return (
     <div>
       <HomeHero />
