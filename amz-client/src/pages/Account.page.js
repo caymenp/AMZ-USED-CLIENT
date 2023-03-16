@@ -14,6 +14,7 @@ import ConfirmationModal from "../components/ConfirmationModal";
 import ProductDetailModal from "../components/ProductDetailModal";
 import { UserNotAuth } from "../components/UserNotAuth";
 import { AdBanner } from "../components/RevenueHitsBanner";
+import { AdterraBanner } from "../components/AdsBanner";
 
 export const AccountPage = () => {
   const { user } = useAuth0();
@@ -81,6 +82,7 @@ export const AccountPage = () => {
       >
         <AccountActionBar openModal={handleModalOpen} />
       </div>
+      <AdterraBanner />
       <div id="accountContentContainer">
         <ProductCards handleDelete={deleteItem} handleDetails={detailModal} />
       </div>
