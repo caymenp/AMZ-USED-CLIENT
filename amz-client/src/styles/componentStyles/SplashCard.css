@@ -1,7 +1,10 @@
-#splashCardContainer {
+.css-lo0cu-MuiPaper-root {
   flex-direction: row;
   background-color: aliceblue;
-  width: 100%;
+  width: 90%;
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #homeCardContent {
