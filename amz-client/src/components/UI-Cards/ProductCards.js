@@ -17,7 +17,7 @@ export const ProductCards = ({ handleDelete, handleDetails }) => {
   };
 
   return (
-    <Grid container direction={"row"}>
+    <div>
       {data &&
         [...data].reverse().map((product) => {
           return (
@@ -130,6 +130,6 @@ export const ProductCards = ({ handleDelete, handleDetails }) => {
             </Grid>
           );
         })}
-    </Grid>
+    </div>
   );
 };
