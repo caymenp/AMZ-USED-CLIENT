@@ -78,7 +78,11 @@ export const AccountPage = () => {
     <div id="accountWrapper">
       <div
         id="actionBarContainer"
-        style={{ backgroundColor: "whitesmoke", padding: 5 }}
+        style={{
+          backgroundColor: "whitesmoke",
+          padding: 5,
+          marginBottom: "2rem",
+        }}
       >
         <AccountActionBar openModal={handleModalOpen} />
       </div>
