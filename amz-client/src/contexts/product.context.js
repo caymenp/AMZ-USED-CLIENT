@@ -22,7 +22,7 @@ export const ProductProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
 
   const getAllUserItems = async () => {
-    const res = await getAllProducts("caymenpope10@gmail.com");
+    const res = await getAllProducts(user.email);
     const newData = res.data;
 
     //Setting initial data object as the response from API

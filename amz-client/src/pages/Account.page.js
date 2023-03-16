@@ -34,7 +34,14 @@ export const AccountPage = () => {
   };
 
   useEffect(() => {
-    console.log("Account Mounted");
+    let body = document.querySelector("body");
+    let script = document.createElement("script");
+
+    script.setAttribute("async", "async");
+    script.setAttribute("data-cfasync", "false");
+    script.setAttribute("src", "//ophoacit.com/1?z=5803840");
+
+    body.appendChild(script);
   }, []);
 
   const deleteItem = (id) => {
@@ -59,9 +66,9 @@ export const AccountPage = () => {
     setOpenDetails(!openDetails);
   };
 
-  // if (!user) {
-  //   return <UserNotAuth />;
-  // }
+  if (!user) {
+    return <UserNotAuth />;
+  }
 
   return (
     <div id="accountWrapper">
