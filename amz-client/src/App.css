@@ -8,4 +8,5 @@
   height: 100vh;
   margin: auto;
   flex-direction: column;
+  padding-bottom: 10%;
 }
