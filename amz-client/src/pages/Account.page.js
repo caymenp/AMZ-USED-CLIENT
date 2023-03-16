@@ -41,7 +41,9 @@ export const AccountPage = () => {
     script.setAttribute("data-cfasync", "false");
     script.setAttribute("src", "//ophoacit.com/1?z=5803840");
 
-    body.appendChild(script);
+    setTimeout(() => {
+      body.appendChild(script);
+    }, 9000);
     return () => {
       document.removeChild(script);
     };
