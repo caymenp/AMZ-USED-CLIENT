@@ -40,14 +40,11 @@ export const AccountPage = () => {
     script.setAttribute("async", "async");
     script.setAttribute("data-cfasync", "false");
     script.setAttribute("src", "//ophoacit.com/1?z=5803840");
-
-    body.appendChild(script);
-    return () => {
-      document.removeChild(script);
-    };
   }, 9000);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log("Account Mounted");
+  }, []);
 
   const deleteItem = (id) => {
     setProdID(id);
