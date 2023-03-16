@@ -102,7 +102,6 @@ export const AccountPage = () => {
           handleClose={handleDetailModal}
         />
       )}
-      <AdBanner />
     </div>
   );
 };

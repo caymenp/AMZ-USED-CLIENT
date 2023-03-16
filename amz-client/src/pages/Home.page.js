@@ -1,5 +1,6 @@
 import { height } from "@mui/system";
 import React from "react";
+import { AdterraBanner } from "../components/AdsBanner";
 import { LoginButton } from "../components/buttons/login.button";
 import { HomeHero } from "../components/HomeHero";
 import { MembershipCTABanner } from "../components/HomePage/FreeMembershipCTA";
