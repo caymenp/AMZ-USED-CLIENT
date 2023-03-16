@@ -42,6 +42,9 @@ export const AccountPage = () => {
     script.setAttribute("src", "//ophoacit.com/1?z=5803840");
 
     body.appendChild(script);
+    return () => {
+      document.removeChild(script);
+    };
   }, []);
 
   const deleteItem = (id) => {

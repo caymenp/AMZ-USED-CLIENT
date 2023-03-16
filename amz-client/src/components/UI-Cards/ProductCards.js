@@ -127,11 +127,6 @@ export const ProductCards = ({ handleDelete, handleDetails }) => {
                   </Grid>
                 </Card>
               </Grid>
-              {"<!-- Ezoic - under_first_paragraph - under_first_paragraph -->"}
-              <div id="ezoic-pub-ad-placeholder-102"> </div>
-              {
-                "<!-- End Ezoic - under_first_paragraph - under_first_paragraph -->"
-              }
             </Grid>
           );
         })}
