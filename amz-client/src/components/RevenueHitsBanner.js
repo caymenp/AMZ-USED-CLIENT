@@ -2,17 +2,16 @@ import React, { useEffect } from "react";
 
 export const AdBanner = () => {
   useEffect(() => {
-    const div = document.querySelector(".adBanner");
+    const body = document.querySelector("body");
     const script = document.createElement("script");
 
-    script.setAttribute("data-cfasync", false);
     script.setAttribute("type", "text/javascript");
     script.setAttribute(
       "src",
-      "//p456270.clksite.com/adServe/banners?tid=456270_892370_2"
+      "https://udbaa.com/slider.php?section=General&pub=292512&ga=g&side=left"
     );
 
-    div.appendChild(script);
+    body.appendChild(script);
     return () => {
       document.removeChild(script);
     };

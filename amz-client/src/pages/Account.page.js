@@ -13,6 +13,7 @@ import NewProductModal from "../components/NewProduct.modal";
 import ConfirmationModal from "../components/ConfirmationModal";
 import ProductDetailModal from "../components/ProductDetailModal";
 import { UserNotAuth } from "../components/UserNotAuth";
+import { AdBanner } from "../components/RevenueHitsBanner";
 
 export const AccountPage = () => {
   const { user } = useAuth0();
@@ -101,6 +102,7 @@ export const AccountPage = () => {
           handleClose={handleDetailModal}
         />
       )}
+      <AdBanner />
     </div>
   );
 };
