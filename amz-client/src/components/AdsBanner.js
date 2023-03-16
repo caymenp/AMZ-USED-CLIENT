@@ -26,5 +26,5 @@ export const AdterraBanner = () => {
     }
   }, []);
 
-  return <div ref={banner} />;
+  return <div style={{ textAlign: "center" }} ref={banner} />;
 };
