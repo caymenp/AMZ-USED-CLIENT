@@ -1,4 +1,4 @@
-#Ads.txt amzused.com
+google.com, pub-9330407413116729, DIRECT, f08c47fec0942fa0
 
 152media.com, 152, DIRECT
 152media.info, 152M1, RESELLER
