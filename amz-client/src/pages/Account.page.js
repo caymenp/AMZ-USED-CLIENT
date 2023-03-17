@@ -8,7 +8,6 @@ import "../styles/pageStyles/accountPage.css";
 import NewProductModal from "../components/NewProduct.modal";
 import ConfirmationModal from "../components/ConfirmationModal";
 import ProductDetailModal from "../components/ProductDetailModal";
-import { AdterraBanner } from "../components/AdsBanner";
 import { UserNotAuth } from "../components/UserNotAuth";
 
 export const AccountPage = () => {
@@ -73,7 +72,6 @@ export const AccountPage = () => {
       >
         <AccountActionBar openModal={handleModalOpen} />
       </div>
-      <AdterraBanner />
       <div id="accountContentContainer">
         <ProductCards
           handleDelete={deleteItem}
