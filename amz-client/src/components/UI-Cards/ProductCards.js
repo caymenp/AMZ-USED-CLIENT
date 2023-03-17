@@ -156,9 +156,6 @@ export const ProductCards = ({ handleDelete, handleDetails }) => {
             </Grid>
           );
         })}
-      <div style={{ width: "90%" }}>
-        <AdterraBanner />
-      </div>
     </div>
   );
 };
