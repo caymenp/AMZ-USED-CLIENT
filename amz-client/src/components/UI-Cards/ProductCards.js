@@ -6,9 +6,9 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useProductData } from "../../contexts/product.context";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import { AdterraBanner } from "../AdsBanner";
+import emptyTable from "../../util/media/Empty Cart.png";
 
-export const ProductCards = ({ handleDelete, handleDetails }) => {
+export const ProductCards = ({ handleDelete, handleDetails, openModal }) => {
   const data = useProductData();
 
   const checkUsedPriceArray = (product) => {
@@ -61,6 +61,30 @@ export const ProductCards = ({ handleDelete, handleDetails }) => {
       return `You are saving ${savings}% off the normal price! 🥳`;
     }
   };
+
+  if (!data) {
+    return (
+      <div
+        style={{
+          textAlign: "center",
+          padding: "0",
+          margin: "0",
+        }}
+      >
+        <img
+          style={{
+            maxWidth: "100%",
+            height: "auto",
+            padding: "0",
+            margin: "0",
+          }}
+          src={emptyTable}
+          alt="Empty Table"
+          onClick={openModal}
+        />
+      </div>
+    );
+  }
 
   return (
     <div>

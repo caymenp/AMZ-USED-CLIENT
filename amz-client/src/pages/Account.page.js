@@ -81,7 +81,11 @@ export const AccountPage = () => {
       </div>
       <AdterraBanner />
       <div id="accountContentContainer">
-        <ProductCards handleDelete={deleteItem} handleDetails={detailModal} />
+        <ProductCards
+          handleDelete={deleteItem}
+          handleDetails={detailModal}
+          openModal={handleModalOpen}
+        />
       </div>
 
       {open && <NewProductModal loadModal={handleModalOpen} />}
