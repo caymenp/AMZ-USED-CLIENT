@@ -9,7 +9,6 @@ import { Header } from "./components/header";
 import { ProductProvider } from "./contexts/product.context";
 import { PageLoader } from "./components/pageLoader";
 import { UserAccount } from "./pages/UserAccount.page";
-import RouteChangeTracker from "./util/utilities/RouteChangeTracker";
 
 function App() {
   const { isLoading } = useAuth0();
