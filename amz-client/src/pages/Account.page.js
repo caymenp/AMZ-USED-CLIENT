@@ -57,9 +57,9 @@ export const AccountPage = () => {
     setOpenDetails(!openDetails);
   };
 
-  // if (!user) {
-  //   return <UserNotAuth />;
-  // }
+  if (!user) {
+    return <UserNotAuth />;
+  }
 
   return (
     <div id="accountWrapper">
