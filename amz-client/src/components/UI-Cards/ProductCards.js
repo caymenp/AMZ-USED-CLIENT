@@ -14,7 +14,7 @@ export const ProductCards = ({ handleDelete, handleDetails }) => {
   const checkUsedPriceArray = (product) => {
     let arraySize = product.productPriceUsed.length;
 
-    if (isNaN(arraySize)) {
+    if (arraySize === 0) {
       return 0;
     } else {
       return arraySize;
@@ -35,7 +35,10 @@ export const ProductCards = ({ handleDelete, handleDetails }) => {
 
   const displayUsedPrice = (product) => {
     const arraySize = checkUsedPriceArray(product);
-    if (arraySize === 0) {
+    if (
+      arraySize === 0 ||
+      product.productPriceUsed[arraySize - 1].usedPrice === 0
+    ) {
       return "No deals listed 😢";
     } else {
       let mostRecentPrice = product.productPriceUsed[arraySize - 1].usedPrice;
@@ -45,7 +48,10 @@ export const ProductCards = ({ handleDelete, handleDetails }) => {
 
   const getDiscountedAmount = (product) => {
     let arraySize = checkUsedPriceArray(product);
-    if (arraySize === 0) {
+    if (
+      arraySize === 0 ||
+      product.productPriceUsed[arraySize - 1].usedPrice === 0
+    ) {
       return "No Deals Found. 😱 We will keep searching!";
     } else {
       const amountDiff =
