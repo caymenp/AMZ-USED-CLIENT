@@ -1,6 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import React, { useEffect, useState, useContext, createContext } from "react";
-import App from "../App";
 import { PageLoader } from "../components/pageLoader";
 import {
   addNewProduct,
@@ -22,7 +21,7 @@ export const ProductProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
 
   const getAllUserItems = async () => {
-    const res = await getAllProducts(user.email);
+    const res = await getAllProducts("caymenpope10@gmail.com");
     const newData = res.data;
 
     //Setting initial data object as the response from API
@@ -79,7 +78,17 @@ export const ProductProvider = ({ children }) => {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if (!user) {
+    return (
+      <div>
+        {children}
+        {loading && <PageLoader />}
+      </div>
+    );
+  }
 
   return (
     <ProductContext.Provider value={data}>

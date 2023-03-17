@@ -13,7 +13,7 @@ export const Home = () => {
     if (user) {
       navigate("/account");
     }
-  }, []);
+  }, [navigate, user]);
 
   return (
     <div>

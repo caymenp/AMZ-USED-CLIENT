@@ -1,24 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
 import { PageLoader } from "../components/pageLoader";
-import {
-  ProductProvider,
-  useProductData,
-  useProductActions,
-} from "../contexts/product.context";
+import { useProductActions } from "../contexts/product.context";
 import { ProductCards } from "../components/UI-Cards/ProductCards";
 import { AccountActionBar } from "../components/AccountActionBar";
 import "../styles/pageStyles/accountPage.css";
 import NewProductModal from "../components/NewProduct.modal";
 import ConfirmationModal from "../components/ConfirmationModal";
 import ProductDetailModal from "../components/ProductDetailModal";
-import { UserNotAuth } from "../components/UserNotAuth";
-import { AdBanner } from "../components/RevenueHitsBanner";
 import { AdterraBanner } from "../components/AdsBanner";
 
 export const AccountPage = () => {
-  const { user } = useAuth0();
-  const initialData = useProductData();
   const actions = useProductActions();
   const [prodID, setProdID] = useState();
   const [open, setOpen] = useState(false);
@@ -36,7 +27,6 @@ export const AccountPage = () => {
   };
 
   setTimeout(() => {
-    let body = document.querySelector("body");
     let script = document.createElement("script");
 
     script.setAttribute("async", "async");
@@ -70,9 +60,9 @@ export const AccountPage = () => {
     setOpenDetails(!openDetails);
   };
 
-  if (!user) {
-    return <UserNotAuth />;
-  }
+  // if (!user) {
+  //   return <UserNotAuth />;
+  // }
 
   return (
     <div id="accountWrapper">
