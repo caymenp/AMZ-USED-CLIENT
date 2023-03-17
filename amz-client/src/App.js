@@ -14,8 +14,6 @@ import RouteChangeTracker from "./util/utilities/RouteChangeTracker";
 function App() {
   const { isLoading } = useAuth0();
 
-  RouteChangeTracker();
-
   if (isLoading) {
     return (
       <div className="page-layout">
