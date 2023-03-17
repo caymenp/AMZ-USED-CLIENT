@@ -14,7 +14,7 @@ export const ProductCards = ({ handleDelete, handleDetails }) => {
   const checkUsedPriceArray = (product) => {
     let arraySize = product.productPriceUsed.length;
 
-    if (arraySize === 0 || isNaN(arraySize)) {
+    if (isNaN(arraySize)) {
       return 0;
     } else {
       return arraySize;
