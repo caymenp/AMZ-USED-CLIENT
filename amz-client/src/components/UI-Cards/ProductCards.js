@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useProductData } from "../../contexts/product.context";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import emptyTable from "../../util/media/Empty Cart.png";
+import { EmptyTable } from "../emptyTable";
 
 export const ProductCards = ({ handleDelete, handleDetails, openModal }) => {
   const data = useProductData();
@@ -62,32 +62,9 @@ export const ProductCards = ({ handleDelete, handleDetails, openModal }) => {
     }
   };
 
-  if (!data) {
-    return (
-      <div
-        style={{
-          textAlign: "center",
-          padding: "0",
-          margin: "0",
-        }}
-      >
-        <img
-          style={{
-            maxWidth: "100%",
-            height: "auto",
-            padding: "0",
-            margin: "0",
-          }}
-          src={emptyTable}
-          alt="Empty Table"
-          onClick={openModal}
-        />
-      </div>
-    );
-  }
-
   return (
     <div>
+      {!data && <EmptyTable openModal={openModal} />}
       {data &&
         [...data].reverse().map((product) => {
           return (

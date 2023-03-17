@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { PageLoader } from "../components/pageLoader";
-import { useProductActions } from "../contexts/product.context";
+import { useProductActions, useProductData } from "../contexts/product.context";
 import { ProductCards } from "../components/UI-Cards/ProductCards";
 import { AccountActionBar } from "../components/AccountActionBar";
 import "../styles/pageStyles/accountPage.css";
@@ -12,6 +12,7 @@ import { AdterraBanner } from "../components/AdsBanner";
 import { UserNotAuth } from "../components/UserNotAuth";
 
 export const AccountPage = () => {
+  const data = useProductData();
   const actions = useProductActions();
   const { user } = useAuth0();
   const [prodID, setProdID] = useState();
@@ -29,16 +30,9 @@ export const AccountPage = () => {
     setConfirm(!confirm);
   };
 
-  setTimeout(() => {
-    let script = document.createElement("script");
-
-    script.setAttribute("async", "async");
-    script.setAttribute("data-cfasync", "false");
-    script.setAttribute("src", "//ophoacit.com/1?z=5803840");
-  }, 9000);
-
   useEffect(() => {
     console.log("Account Mounted");
+    console.log(data);
   }, []);
 
   const deleteItem = (id) => {
@@ -63,9 +57,9 @@ export const AccountPage = () => {
     setOpenDetails(!openDetails);
   };
 
-  if (!user) {
-    return <UserNotAuth />;
-  }
+  // if (!user) {
+  //   return <UserNotAuth />;
+  // }
 
   return (
     <div id="accountWrapper">
