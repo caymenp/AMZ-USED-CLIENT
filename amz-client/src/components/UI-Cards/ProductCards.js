@@ -42,7 +42,7 @@ export const ProductCards = ({ handleDelete, handleDetails }) => {
       return "No deals listed 😢";
     } else {
       let mostRecentPrice = product.productPriceUsed[arraySize - 1].usedPrice;
-      return mostRecentPrice;
+      return `$${mostRecentPrice}`;
     }
   };
 
@@ -103,7 +103,7 @@ export const ProductCards = ({ handleDelete, handleDetails }) => {
                         </Grid>
                         <Grid item xs={12} sm={12}>
                           <Typography variant="h6" align="center">
-                            ${displayUsedPrice(product)}
+                            {displayUsedPrice(product)}
                           </Typography>
                         </Grid>
                       </Grid>

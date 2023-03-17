@@ -29,9 +29,9 @@ export default function ConfirmationModal({ deleteItem, setConfirm }) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={setConfirm}>Disagree</Button>
+          <Button onClick={setConfirm}>Cancel</Button>
           <Button onClick={deleteItem} autoFocus>
-            Agree
+            Delete
           </Button>
         </DialogActions>
       </Dialog>
