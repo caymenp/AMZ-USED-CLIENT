@@ -46,6 +46,14 @@ export default function ProductDetailModal({ product, handleClose }) {
     }
   };
 
+  const getUsedPrice = (item) => {
+    if (item.usedPrice === 0) {
+      return "No Deals Listed";
+    } else {
+      return `$${item.usedPrice}`;
+    }
+  };
+
   return (
     <Dialog
       open={open}
@@ -82,7 +90,7 @@ export default function ProductDetailModal({ product, handleClose }) {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    ${item.usedPrice}
+                    {getUsedPrice(item)}
                   </TableCell>
                   <TableCell align="right">
                     {new Date(item.dateTracker).toLocaleDateString()}
