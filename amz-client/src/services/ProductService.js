@@ -38,10 +38,12 @@ export async function deleteProduct(prodID) {
   return response;
 }
 
-export async function refreshItem(prodID, prodURL) {
+export async function refreshItem(prodID, prodURL, recePrice, email) {
   const payload = {
     _id: prodID,
     productURL: prodURL,
+    recentPrice: recePrice,
+    userEmail: email,
   };
   const response = await axios.post(
     "https://api.amzused.com/app/refreshItem",

@@ -14,9 +14,11 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useProductActions } from "../contexts/product.context";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function ProductDetailModal({ product, handleClose }) {
   const [open, setOpen] = React.useState(true);
+  const { user } = useAuth0();
   const actions = useProductActions();
   const initialData = product;
   const [productData, setProductData] = React.useState(initialData);
@@ -26,7 +28,10 @@ export default function ProductDetailModal({ product, handleClose }) {
   const handleRefresh = async () => {
     const newData = await actions.refreshProductPrice(
       productData._id,
-      productData.productURL
+      productData.productURL,
+      productData.productPriceUsed[productData.productPriceUsed.length - 1]
+        .usedPrice,
+      user.email
     );
 
     setProductData(newData.data);

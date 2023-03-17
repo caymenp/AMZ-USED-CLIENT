@@ -42,8 +42,8 @@ export const ProductProvider = ({ children }) => {
     await getAllUserItems();
   };
 
-  const refreshProduct = async (prodID, prodURL) => {
-    const newData = await refreshItem(prodID, prodURL);
+  const refreshProduct = async (prodID, prodURL, recePrice, email) => {
+    const newData = await refreshItem(prodID, prodURL, recePrice, email);
     return newData;
   };
 
@@ -61,9 +61,9 @@ export const ProductProvider = ({ children }) => {
       await deleteItem(prodID);
       setLoading(false);
     },
-    refreshProductPrice: async function (prodID, prodURL) {
+    refreshProductPrice: async function (prodID, prodURL, recPrice, useEmail) {
       setLoading(true);
-      const newData = await refreshProduct(prodID, prodURL);
+      const newData = await refreshProduct(prodID, prodURL, recPrice, useEmail);
       setLoading(false);
       return newData;
     },

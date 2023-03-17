@@ -11,9 +11,49 @@ import { AdterraBanner } from "../AdsBanner";
 export const ProductCards = ({ handleDelete, handleDetails }) => {
   const data = useProductData();
 
-  const getDiscountedAmount = (newPrice, usedPrice) => {
-    const amountDiff = newPrice - usedPrice;
-    return Math.trunc((amountDiff / newPrice) * 100);
+  const checkUsedPriceArray = (product) => {
+    let arraySize = product.productPriceUsed.length;
+
+    if (arraySize === 0) {
+      return 0;
+    } else {
+      return arraySize;
+    }
+  };
+
+  const getUpdateDate = (product) => {
+    let arraySize = checkUsedPriceArray(product);
+
+    if (arraySize === 0) {
+      return new Date(product.dateAdded).toLocaleDateString();
+    } else {
+      return new Date(
+        product.productPriceUsed[arraySize - 1].dateTracker
+      ).toLocaleDateString();
+    }
+  };
+
+  const displayUsedPrice = (product) => {
+    const arraySize = checkUsedPriceArray(product);
+    if (arraySize === 0) {
+      return "No deals listed 😢";
+    } else {
+      let mostRecentPrice = product.productPriceUsed[arraySize - 1].usedPrice;
+      return mostRecentPrice;
+    }
+  };
+
+  const getDiscountedAmount = (product) => {
+    let arraySize = checkUsedPriceArray(product);
+    if (arraySize === 0) {
+      return "No Deals Found. 😱 We will keep searching!";
+    } else {
+      const amountDiff =
+        product.fullPrice - product.productPriceUsed[arraySize - 1].usedPrice;
+      const savings = Math.trunc((amountDiff / product.fullPrice) * 100);
+
+      return `You are saving ${savings}% off the normal price! 🥳`;
+    }
   };
 
   return (
@@ -29,12 +69,7 @@ export const ProductCards = ({ handleDelete, handleDetails }) => {
                       {product.productName}
                     </Typography>
                     <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                      Last Update:{" "}
-                      {new Date(
-                        product.productPriceUsed[
-                          product.productPriceUsed.length - 1
-                        ].dateTracker
-                      ).toLocaleDateString()}
+                      Last Update: {getUpdateDate(product)}
                     </Typography>
                     <Grid container direction="row">
                       <Grid
@@ -62,12 +97,7 @@ export const ProductCards = ({ handleDelete, handleDetails }) => {
                         </Grid>
                         <Grid item xs={12} sm={12}>
                           <Typography variant="h6" align="center">
-                            $
-                            {
-                              product.productPriceUsed[
-                                product.productPriceUsed.length - 1
-                              ].usedPrice
-                            }
+                            ${displayUsedPrice(product)}
                           </Typography>
                         </Grid>
                       </Grid>
@@ -77,17 +107,7 @@ export const ProductCards = ({ handleDelete, handleDetails }) => {
                       align="center"
                       sx={{ marginTop: 2 }}
                     >
-                      You are saving{" "}
-                      <strong>
-                        {getDiscountedAmount(
-                          product.fullPrice,
-                          product.productPriceUsed[
-                            product.productPriceUsed.length - 1
-                          ].usedPrice
-                        )}
-                        %{" "}
-                      </strong>
-                      off the normal price!
+                      {getDiscountedAmount(product)}
                     </Typography>
                     <Grid container>
                       <Grid item xs={12} textAlign="center" marginTop={2}>
