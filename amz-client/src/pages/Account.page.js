@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import { PageLoader } from "../components/pageLoader";
 import { useProductActions } from "../contexts/product.context";
 import { ProductCards } from "../components/UI-Cards/ProductCards";
@@ -8,9 +9,11 @@ import NewProductModal from "../components/NewProduct.modal";
 import ConfirmationModal from "../components/ConfirmationModal";
 import ProductDetailModal from "../components/ProductDetailModal";
 import { AdterraBanner } from "../components/AdsBanner";
+import { UserNotAuth } from "../components/UserNotAuth";
 
 export const AccountPage = () => {
   const actions = useProductActions();
+  const { user } = useAuth0();
   const [prodID, setProdID] = useState();
   const [open, setOpen] = useState(false);
   const [confirm, setConfirm] = useState(false);
@@ -60,9 +63,9 @@ export const AccountPage = () => {
     setOpenDetails(!openDetails);
   };
 
-  // if (!user) {
-  //   return <UserNotAuth />;
-  // }
+  if (!user) {
+    return <UserNotAuth />;
+  }
 
   return (
     <div id="accountWrapper">
