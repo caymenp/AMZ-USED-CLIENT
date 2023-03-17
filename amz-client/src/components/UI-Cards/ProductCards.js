@@ -6,7 +6,6 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useProductData } from "../../contexts/product.context";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import { AdBanner } from "../RevenueHitsBanner";
 import { AdterraBanner } from "../AdsBanner";
 
 export const ProductCards = ({ handleDelete, handleDetails }) => {
@@ -131,7 +130,9 @@ export const ProductCards = ({ handleDelete, handleDetails }) => {
             </Grid>
           );
         })}
-      <AdterraBanner />
+      <div style={{ width: "90%" }}>
+        <AdterraBanner />
+      </div>
     </div>
   );
 };
