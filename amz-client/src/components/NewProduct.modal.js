@@ -38,6 +38,7 @@ export default function NewProductModal({ loadModal }) {
         "This doesn't look like an Amazon link we've seen before. Please make sure to copy the FULL URL from Amazon."
       );
     } else {
+      setValidationError();
       setBtnDisabled(false);
     }
   };
