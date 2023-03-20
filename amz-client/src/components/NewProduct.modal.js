@@ -12,6 +12,7 @@ export default function NewProductModal({ loadModal }) {
   const actions = useProductActions();
   const [open, setOpen] = useState(true);
   const [url, setURL] = useState("");
+  const [btnDisabled, setBtnDisabled] = useState(true);
 
   const handleClose = () => {
     loadModal();
@@ -24,6 +25,10 @@ export default function NewProductModal({ loadModal }) {
 
   const handleInput = (event) => {
     setURL(event.target.value);
+
+    if (event.target.value.indexOf(" ") < 0) {
+      setBtnDisabled(false);
+    }
   };
 
   return (
@@ -50,7 +55,11 @@ export default function NewProductModal({ loadModal }) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button variant="contained" onClick={handleAdd}>
+          <Button
+            variant="contained"
+            disabled={btnDisabled}
+            onClick={handleAdd}
+          >
             Add Product
           </Button>
         </DialogActions>
