@@ -30,18 +30,14 @@ export default function NewProductModal({ loadModal }) {
     if (event.target.value.indexOf(" ") >= 0) {
       setBtnDisabled(true);
       setValidationError(
-        <DialogContentText style={{ color: "	#EE4B2B" }}>
-          The URL cannot contain any spaces.{"\n"}
-          Please ensure you're using the FULL URL from Amazon.
-        </DialogContentText>
+        `The URL cannot contain any spaces.${"\n"}
+          Please ensure you're using the FULL URL from Amazon.`
       );
     } else if (event.target.value.indexOf("dp") < 0) {
       setBtnDisabled(true);
       setValidationError(
-        <DialogContentText style={{ color: "	#EE4B2B" }}>
-          This doesn't look like an Amazon link we've seen before.{"\n"}
-          Please make sure to copy the FULL URL from Amazon.
-        </DialogContentText>
+        `This doesn't look like an Amazon link we've seen before.${"\n"}
+          Please make sure to copy the FULL URL from Amazon.`
       );
     } else {
       setValidationError();
@@ -70,7 +66,11 @@ export default function NewProductModal({ loadModal }) {
             value={url}
             onChange={handleInput}
           />
-          {validationError && { validationError }}
+          {validationError && (
+            <DialogContentText style={{ color: "	#EE4B2B" }}>
+              {validationError}
+            </DialogContentText>
+          )}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
