@@ -13,6 +13,7 @@ export default function NewProductModal({ loadModal }) {
   const [open, setOpen] = useState(true);
   const [url, setURL] = useState("");
   const [btnDisabled, setBtnDisabled] = useState(true);
+  const [validationError, setValidationError] = useState();
 
   const handleClose = () => {
     loadModal();
@@ -26,7 +27,17 @@ export default function NewProductModal({ loadModal }) {
   const handleInput = (event) => {
     setURL(event.target.value);
 
-    if (event.target.value.indexOf(" ") < 0) {
+    if (event.target.value.indexOf(" ") >= 0) {
+      setBtnDisabled(true);
+      setValidationError(
+        "The URL cannot contain any spaces. Please ensure you're using the FULL URL from Amazon."
+      );
+    } else if (event.target.value.indexOf("dp") >= 0) {
+      setBtnDisabled(true);
+      setValidationError(
+        "This doesn't look like an Amazon link we've seen before. Please make sure to copy the FULL URL from Amazon."
+      );
+    } else {
       setBtnDisabled(false);
     }
   };
@@ -53,6 +64,9 @@ export default function NewProductModal({ loadModal }) {
             onChange={handleInput}
           />
         </DialogContent>
+        {validationError && (
+          <span style={{ color: "	#EE4B2B" }}>{validationError}</span>
+        )}
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
           <Button
