@@ -81,14 +81,14 @@ export const ProductProvider = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!user) {
-    return (
-      <div>
-        {children}
-        {loading && <PageLoader />}
-      </div>
-    );
-  }
+  // if (!user) {
+  //   return (
+  //     <div>
+  //       {children}
+  //       {loading && <PageLoader />}
+  //     </div>
+  //   );
+  // }
 
   return (
     <ProductContext.Provider value={data}>

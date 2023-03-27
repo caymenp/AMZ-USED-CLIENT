@@ -50,5 +50,7 @@ export async function refreshItem(prodID, prodURL, recePrice, email) {
     payload
   );
 
+  console.log(response);
+
   return response;
 }

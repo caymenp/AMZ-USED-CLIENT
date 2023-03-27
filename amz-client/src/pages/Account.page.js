@@ -95,6 +95,7 @@ export const AccountPage = () => {
         <ProductDetailModal
           product={selectedProduct}
           handleClose={handleDetailModal}
+          openModal={openDetails}
         />
       )}
     </div>

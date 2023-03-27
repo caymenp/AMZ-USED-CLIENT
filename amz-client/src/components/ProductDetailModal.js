@@ -15,15 +15,25 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useProductActions } from "../contexts/product.context";
 import { useAuth0 } from "@auth0/auth0-react";
+import AMZad from "./AMZad";
+import { Helmet } from "react-helmet";
 
-export default function ProductDetailModal({ product, handleClose }) {
-  const [open, setOpen] = React.useState(true);
+export default function ProductDetailModal({
+  product,
+  handleClose,
+  openModal,
+}) {
+  const [open, setOpen] = React.useState(false);
   const { user } = useAuth0();
   const actions = useProductActions();
   const initialData = product;
   const [productData, setProductData] = React.useState(initialData);
-
-  React.useEffect(() => {}, []);
+  const [loading, setLoading] = React.useState(true);
+  //AMZ ADS
+  React.useEffect(() => {
+    setOpen(openModal);
+    setLoading(false);
+  }, []);
 
   const handleRefresh = async () => {
     const newData = await actions.refreshProductPrice(
@@ -39,9 +49,11 @@ export default function ProductDetailModal({ product, handleClose }) {
 
   const handleRefreshOnClose = () => {
     if (initialData === productData) {
+      setLoading(true);
       handleClose();
     } else {
       actions.getAllProducts();
+      setLoading(true);
       handleClose();
     }
   };
@@ -53,6 +65,19 @@ export default function ProductDetailModal({ product, handleClose }) {
       return `$${item.usedPrice}`;
     }
   };
+
+  const script1 = `
+  amzn_assoc_placement = "adunit0";
+  amzn_assoc_tracking_id = "pricecut20-20";
+  amzn_assoc_ad_mode = "search";
+  amzn_assoc_ad_type = "smart";
+  amzn_assoc_marketplace = "amazon";
+  amzn_assoc_region = "US";
+  amzn_assoc_default_search_phrase = "${productData.productName}";
+  amzn_assoc_default_category = "All";
+  amzn_assoc_linkid = "57cc56e736c10ffd87f14ef0500116f1";
+  amzn_assoc_design = "in_content";
+  amzn_assoc_title = "Related Amazon Products:";`;
 
   return (
     <Dialog
@@ -100,6 +125,16 @@ export default function ProductDetailModal({ product, handleClose }) {
             </TableBody>
           </Table>
         </TableContainer>
+        <Grid container>
+          <Grid item xs={12}>
+            <div id="amzn_assoc_ad_div_adunit0_0">
+              <Helmet>
+                <script type="text/javascript">{script1}</script>
+                <script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
+              </Helmet>
+            </div>
+          </Grid>
+        </Grid>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleRefreshOnClose}>Close</Button>
