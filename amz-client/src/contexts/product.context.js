@@ -44,7 +44,7 @@ export const ProductProvider = ({ children }) => {
 
   const refreshProduct = async (prodID, prodURL, recePrice, email) => {
     const newData = await refreshItem(prodID, prodURL, recePrice, email);
-    return newData;
+    return newData.data;
   };
 
   const dispatchActions = {
